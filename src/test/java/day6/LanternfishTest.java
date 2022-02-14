@@ -38,4 +38,31 @@ public class LanternfishTest {
 		assertEquals(396210, Lanternfish.partOne(input, days));
 	}
 
+	@Test
+	public void test3() {
+		var days = 256;
+		var input = new int[] { 3, 4, 3, 1, 2 };
+		assertEquals(26984457539l, Lanternfish.partTwo(input, days));
+	}
+
+	@Test
+	public void test4() {
+		var days = 256;
+		var lines = LoadInput.loadToString("day6/input.txt");
+
+		var inputs = new ArrayList<Integer>();
+
+		lines.forEach(line -> {
+			var numbers = line.split(",");
+			for (var number : numbers) {
+				inputs.add(Integer.valueOf(number));
+			}
+		});
+
+		var input = new int[inputs.size()];
+		for (var i = 0; i < inputs.size(); i++)
+			input[i] = inputs.get(i);
+
+		assertEquals(1770823541496l, Lanternfish.partTwo(input, days));
+	}
 }

@@ -24,13 +24,17 @@ public class Lanternfish {
 			previous = current;
 		}
 
-		var count = 0;
+		var count = 0l;
 
 		for (var i = 0; i < current.length; i++) {
 			count += current[i];
 		}
 
 		return count;
+	}
+	
+	public static long partTwo(int[] input, int days) {
+		return partOne(input, days);
 	}
 
 }
