@@ -35,6 +35,33 @@ public class LoadInput {
 
 		return input;
 	}
+	
+	public static int[] loadFromStrings(String path) {
+		var array = new ArrayList<Integer>();
+		
+		var resource = LoadInput.class.getClassLoader().getResource(path);
+		try (var scanner = new Scanner(new File(resource.toURI()))) {
+			var lines = new ArrayList<String>();
+			while (scanner.hasNextLine())
+				lines.add(scanner.nextLine());
+			lines.forEach(line -> {
+				var numbers = line.split(",");
+				for (var number : numbers) {
+					array.add(Integer.valueOf(number));
+				}
+			});
+		} catch (Exception e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		
+		var inputs = new int[array.size()];
+		
+		for (int i = 0; i < inputs.length; i++) {
+			inputs[i] = array.get(i);
+		}
+		
+		return inputs;
+	}
 
 	public static Object[] loadToGiantSquidPuzzle(String path) {
 
